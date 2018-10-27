@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, reorderArray, ToastController } from 'ionic-angular';
 import { TareaProvider } from '../../providers/tarea/tarea';
 import { TareasArchivadasPage } from '../tareas-archivadas/tareas-archivadas';
+import { TareaHttpProvider } from '../../providers/tarea-http/tarea-http';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -13,9 +14,19 @@ export class HomePage {
     public navCtrl: NavController,
     public alerta: AlertController,
     private servicioTareas: TareaProvider,
-    private toast: ToastController
+    private toast: ToastController,
+    private tareaHttp: TareaHttpProvider
     ) {
-   this.tareas = servicioTareas.obtenerTareas();
+  //  this.tareas = servicioTareas.obtenerTareas();
+
+
+  }
+  ionViewDidLoad(){
+    this.tareaHttp.obtenerTareas().subscribe(
+      (datos: any[]) => {
+        this.tareas = datos;
+      }
+    );
   }
 
   agregarTarea(){

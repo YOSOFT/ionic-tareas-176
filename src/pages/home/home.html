@@ -18,7 +18,7 @@
 <ion-content padding>
 <ion-list [reorder]="habilitar" (ionItemReorder)="ordenarTareas($event)">
   <ion-item-sliding *ngFor="let tarea of tareas;let indice= index">
-    <ion-item>{{tarea}}</ion-item>
+    <ion-item>{{tarea.titulo}}</ion-item>
     <ion-item-options side="right">
       <button color="danger" ion-button (click)="archivarTarea(indice)">
         <ion-icon name="trash" ></ion-icon>

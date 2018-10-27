@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TareaProvider } from '../providers/tarea/tarea';
 import { TareasArchivadasPage } from '../pages/tareas-archivadas/tareas-archivadas';
+import { TareaHttpProvider } from '../providers/tarea-http/tarea-http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { TareasArchivadasPage } from '../pages/tareas-archivadas/tareas-archivad
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +32,8 @@ import { TareasArchivadasPage } from '../pages/tareas-archivadas/tareas-archivad
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TareaProvider
+    TareaProvider,
+    TareaHttpProvider
   ]
 })
 export class AppModule {}
