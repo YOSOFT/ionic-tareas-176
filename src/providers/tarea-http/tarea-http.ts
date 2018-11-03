@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -9,13 +9,22 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class TareaHttpProvider {
-  url = 'http://localhost:3000/'
+  url
+  headers
+  usuario_id
   constructor(public http: HttpClient) {
-    console.log('Hello TareaHttpProvider Provider');
+
   }
 
   obtenerTareas(){
-    return this.http.get(this.url + 'tareas');
+    this.url = localStorage.getItem('url');
+    let jwt = localStorage.getItem('jwt');
+    this.usuario_id = localStorage.getItem('id');
+    this.headers = new HttpHeaders({
+      'Authorization' : 'Bearer ' + jwt
+    });
+    let ruta =this.url + 'usuarios/' + this.usuario_id +  '/tareas'
+    return this.http.get(ruta, { headers: this.headers});
   }
 
 }

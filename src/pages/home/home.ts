@@ -3,6 +3,7 @@ import { NavController, AlertController, reorderArray, ToastController } from 'i
 import { TareaProvider } from '../../providers/tarea/tarea';
 import { TareasArchivadasPage } from '../tareas-archivadas/tareas-archivadas';
 import { TareaHttpProvider } from '../../providers/tarea-http/tarea-http';
+import { LoginPage } from '../login/login';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -84,5 +85,10 @@ export class HomePage {
   }
   toogleHabilitar(){
     this.habilitar = !this.habilitar;
+  }
+  cerrarSesion(){
+    localStorage.removeItem("id");
+    localStorage.removeItem("jwt");
+    this.navCtrl.setRoot(LoginPage);
   }
 }

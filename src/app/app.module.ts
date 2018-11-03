@@ -10,12 +10,17 @@ import { TareaProvider } from '../providers/tarea/tarea';
 import { TareasArchivadasPage } from '../pages/tareas-archivadas/tareas-archivadas';
 import { TareaHttpProvider } from '../providers/tarea-http/tarea-http';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthProvider } from '../providers/auth/auth';
+import { LoginPage } from '../pages/login/login';
+import { RegistroPage } from '../pages/registro/registro';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TareasArchivadasPage
+    TareasArchivadasPage,
+    LoginPage,
+    RegistroPage
   ],
   imports: [
     BrowserModule,
@@ -26,14 +31,17 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [
     MyApp,
     HomePage,
-    TareasArchivadasPage
+    TareasArchivadasPage,
+    LoginPage,
+    RegistroPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TareaProvider,
-    TareaHttpProvider
+    TareaHttpProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

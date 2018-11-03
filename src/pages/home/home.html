@@ -4,7 +4,7 @@
       Tareas
     </ion-title>
     <ion-buttons end>
-
+      <button ion-button (click)="cerrarSesion()">Cerrar Sesion</button>
       <button *ngIf="!habilitar" ion-button (click)="toogleHabilitar()">Editar</button>
       <button *ngIf="habilitar" ion-button (click)="toogleHabilitar()">Listo</button>
 
