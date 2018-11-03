@@ -36,6 +36,7 @@ export class RegistroPage {
         (dato: any) => {
           console.log(dato.jwt);
           localStorage.setItem('jwt', dato.jwt);
+          localStorage.setItem('id', dato.id);
           this.navCtrl.setRoot(HomePage);
         }
       );

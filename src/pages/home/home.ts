@@ -43,7 +43,12 @@ export class HomePage {
       handler: (dato) => {
         console.log(dato);
         // this.tareas.push(dato.textoTarea);
-        this.servicioTareas.agregarTarea(dato.textoTarea);
+        // this.servicioTareas.agregarTarea(dato.textoTarea);
+        this.tareaHttp.crearTarea(dato.textoTarea).subscribe(
+          tarea => {
+            this.tareas.push(tarea);
+          }
+        );
       }
     }
       ]
